@@ -6,6 +6,8 @@ Sloths package targets a scenario when you want a dict of dicts.
 Or a dict of dicts of dicts of lists. 
 
 In 'normal' python, after a couple of levels this turns into a mess very quickly.
+
+**before**
 ```python
 # this one is ugly
 year2company2employee2diplomas = defaultdict(lambda: defaultdict(lambda : defaultdict(list)))
@@ -33,18 +35,17 @@ Now, pandas does not help much with data until you completely collected it. Appe
 
 Sloth essentially works as a universal storage, where you can throw data to change its shape later.
 
-
+**after**
 ```python
 
 sloth = Sloth()
-# nested collections are created automatically,
-# and a list is also created automatically.
-# no need to think about this forward
 sloth[year][company].append_at((name, surname), diploma)
-
 
 for company, diplomas in sloth.iterate('year:company:name surname:[diploma] -> company [diploma]'):
     print(f'{company} has in total {len(diplomas)}')
 
 # and that's it, diplomas are grouped by company
 ```
+
+Nested collections are created automatically, and a list is also created automatically (since we pointed at this by using `append_at`).
+There is no need to think about this forward anymore.
