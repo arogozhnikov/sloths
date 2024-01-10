@@ -7,6 +7,9 @@ Or a dict of dicts of dicts of lists.
 
 In 'normal' python, after a couple of levels this turns into a mess very quickly.
 
+Comment from later: I realized that a lot of functionality is missing in this concept 
+to support my critical scenarios, so I'll be reworking the concept
+
 **before**
 ```python
 # this one is ugly
